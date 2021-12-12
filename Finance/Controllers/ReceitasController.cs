@@ -1,5 +1,5 @@
 ﻿using Finance.Data;
-using Finance.ViewModel;
+//==> se der erro retire: "using Finance.ViewModel;"
 using Finance.Models;
 using System.Data.Entity;
 using System.Linq;
@@ -36,10 +36,10 @@ namespace Finance.Controllers
         // GET: Receitas/Create
         public ActionResult Create()
         {
-            var model = new ReceitaViewModel();//==> Se der erro retire: tudo
+            /*var model = new ReceitaViewModel()*/;//==> Se der erro retire: tudo
             //var despesa = new Despesa();
             //ViewBag.Despesa = despesa;
-            return View(model);//==> Se der erro retire: model
+            return View();//==> Se der erro retire: model
         }
 
         // POST: Receitas/Create

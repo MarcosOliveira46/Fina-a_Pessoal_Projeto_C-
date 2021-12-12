@@ -16,7 +16,7 @@ namespace Finance.Models
 
         [Display(Name = "Valor")]
         public double Receita_Valor { get; set; }
-        public virtual TipoDespesa Tipo{ get; set; }
+        //==> se der errado retire: public virtual TipoDespesa Tipo{ get; set; }
     }
 
     public enum TipoReceita
