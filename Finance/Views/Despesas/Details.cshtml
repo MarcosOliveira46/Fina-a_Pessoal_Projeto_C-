@@ -1,0 +1,51 @@
+﻿@model Finance.Models.Despesa
+
+@{
+    Layout = "~/Views/Shared/_CustomLayout.cshtml";
+}
+<div class="container">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span><span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title">Detalhes</h4>
+            </div>
+            <div class="modal-body">
+                <h4>Despesa</h4>
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TipoDespesas.Descricao)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.TipoDespesas.Descricao)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Data_Despesa)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Data_Despesa)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Despesa_Valor)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Despesa_Valor)
+                    </dd>
+
+                </dl>
+            </div>
+            <div class="modal-footer">
+                @Html.ActionLink("Editar", "Edit", new { id = Model.Despesa_Id }, htmlAttributes: new { @class = "btn btn-success", style = "outline:none" })
+                <button type="button" style="outline:none" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                @*@Html.ActionLink("Back to List", "Index")*@
+            </div>
+        </div>
+    </div>
+</div>

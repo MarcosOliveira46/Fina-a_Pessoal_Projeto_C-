@@ -1,31 +1,37 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <!--style="background: rgb(255, 216, 0)!important"-->
+    <h1>Controle Financeiro</h1>
+    <p class="lead">Uma aplicação beseada na sua gestão pessoal. Aqui você consegue ter controle da sua gestão financeira</p>
+    @*<p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>*@
+    @Html.ActionLink("Registre sua despesa", "Index", "Despesas", "", htmlAttributes: new { @class = "btn btn-primary btn-lg" })
 </div>
+
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Getting started</h2>
+        <h2>Crie uma despesa</h2>
         <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+            É possível criar sua própria despesa. Clique no botão abaixo e comece criando um novo gasto!!
         </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        @*<p style="margin-top: 2em;"><a class="btn btn-default" onclick="PrimeiraDespesa()">Crie sua primeira despesa</a></p>*@
+        @Html.ActionLink("Primeira Despesa", "Create", "Despesas", "", new { @class = "btn btn-default", style = "margin-top: 1em;" })
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        <h2>Consulte suas despesas</h2>
+        <p>Consulte aqui a sua lista de despesas. Com o registro dos seus gastos mensais, é possível ter um controle mais específico do seu gasto mensal</p>
+        @Html.ActionLink("Registre sua despesa", "Index", "Despesas", "", htmlAttributes: new { @class = "btn btn-default" })
     </div>
     <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        <h2>Consulte sua receita</h2>
+        <p>Com o registro da sua receita, é possível ter um controle mais exato da sua gestão financeira</p>
+        @Html.ActionLink("Registre sua despesa", "Index", "Receitas", "", htmlAttributes: new { @class = "btn btn-default ", style = "margin-top: 1em;" })
     </div>
 </div>
+
+<script>
+</script>

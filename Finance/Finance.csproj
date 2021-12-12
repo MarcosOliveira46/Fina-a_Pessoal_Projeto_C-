@@ -127,9 +127,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DespesasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ReceitasController.cs" />
-    <Compile Include="Controllers\TipoDespesaController.cs" />
     <Compile Include="Data\DataContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -140,7 +140,6 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Despesa.cs" />
-    <Compile Include="Models\Financeiro.cs" />
     <Compile Include="Models\Receita.cs" />
     <Compile Include="Models\TipoDespesa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -157,6 +156,11 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\inputmask\bindings\inputmask.binding.js" />
+    <Content Include="Scripts\inputmask\inputmask.js" />
+    <Content Include="Scripts\inputmask\inputmask.min.js" />
+    <Content Include="Scripts\inputmask\jquery.inputmask.js" />
+    <Content Include="Scripts\inputmask\jquery.inputmask.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -186,12 +190,15 @@
     <Content Include="Views\Receitas\Details.cshtml" />
     <Content Include="Views\Receitas\Edit.cshtml" />
     <Content Include="Views\Receitas\Index.cshtml" />
-    <Content Include="Views\TipoDespesa\Cadastro.cshtml" />
     <Content Include="Views\Shared\_CustomLayout.cshtml" />
+    <Content Include="Views\Despesas\Create.cshtml" />
+    <Content Include="Views\Despesas\Delete.cshtml" />
+    <Content Include="Views\Despesas\Details.cshtml" />
+    <Content Include="Views\Despesas\Edit.cshtml" />
+    <Content Include="Views\Despesas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="ViewModel\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
