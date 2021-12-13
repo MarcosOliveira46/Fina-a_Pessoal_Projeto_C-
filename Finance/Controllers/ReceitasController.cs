@@ -1,10 +1,13 @@
-﻿using Finance.Data;
-//==> se der erro retire: "using Finance.ViewModel;"
-using Finance.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
+using Finance.Data;
+using Finance.Models;
 
 namespace Finance.Controllers
 {
@@ -36,15 +39,12 @@ namespace Finance.Controllers
         // GET: Receitas/Create
         public ActionResult Create()
         {
-            /*var model = new ReceitaViewModel()*/;//==> Se der erro retire: tudo
-            //var despesa = new Despesa();
-            //ViewBag.Despesa = despesa;
-            return View();//==> Se der erro retire: model
+            return View();
         }
 
         // POST: Receitas/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // Para se proteger de mais ataques, habilite as propriedades específicas às quais você quer se associar. Para 
+        // obter mais detalhes, veja https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ReceitaId,Receita_Nome,Data_Entrada,Receita_Valor")] Receita receita)
@@ -75,8 +75,8 @@ namespace Finance.Controllers
         }
 
         // POST: Receitas/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // Para se proteger de mais ataques, habilite as propriedades específicas às quais você quer se associar. Para 
+        // obter mais detalhes, veja https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ReceitaId,Receita_Nome,Data_Entrada,Receita_Valor")] Receita receita)

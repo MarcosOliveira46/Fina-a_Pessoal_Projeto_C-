@@ -40,16 +40,16 @@ namespace Finance.Controllers
         // GET: Despesas/Create
         public ActionResult Create()
         {
-            ViewBag.Despesa_Id = new SelectList(db.TipoDespesas, "Id", "Descricao");
+            ViewBag.TipoDespesaId = new SelectList(db.TipoDespesas, "Id", "Descricao");
             return View();
         }
 
         // POST: Despesas/Create
-        // Para proteger-se contra ataques de excesso de postagem, ative as propriedades específicas às quais deseja se associar. 
-        // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
+        // Para se proteger de mais ataques, habilite as propriedades específicas às quais você quer se associar. Para 
+        // obter mais detalhes, veja https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Despesa_Id,Data_Despesa,Despesa_Valor")] Despesa despesa)
+        public ActionResult Create([Bind(Include = "Despesa_Id,Data_Despesa,Despesa_Valor,TipoDespesaId")] Despesa despesa)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +58,7 @@ namespace Finance.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Despesa_Id = new SelectList(db.TipoDespesas, "Id", "Descricao", despesa.Despesa_Id);
+            ViewBag.TipoDespesaId = new SelectList(db.TipoDespesas, "Id", "Descricao", despesa.TipoDespesaId);
             return View(despesa);
         }
 
@@ -74,16 +74,16 @@ namespace Finance.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Despesa_Id = new SelectList(db.TipoDespesas, "Id", "Descricao", despesa.Despesa_Id);
+            ViewBag.TipoDespesaId = new SelectList(db.TipoDespesas, "Id", "Descricao", despesa.TipoDespesaId);
             return View(despesa);
         }
 
         // POST: Despesas/Edit/5
-        // Para proteger-se contra ataques de excesso de postagem, ative as propriedades específicas às quais deseja se associar. 
-        // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
+        // Para se proteger de mais ataques, habilite as propriedades específicas às quais você quer se associar. Para 
+        // obter mais detalhes, veja https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Despesa_Id,Data_Despesa,Despesa_Valor")] Despesa despesa)
+        public ActionResult Edit([Bind(Include = "Despesa_Id,Data_Despesa,Despesa_Valor,TipoDespesaId")] Despesa despesa)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +91,7 @@ namespace Finance.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Despesa_Id = new SelectList(db.TipoDespesas, "Id", "Descricao", despesa.Despesa_Id);
+            ViewBag.TipoDespesaId = new SelectList(db.TipoDespesas, "Id", "Descricao", despesa.TipoDespesaId);
             return View(despesa);
         }
 

@@ -1,66 +1,58 @@
 ﻿@model Finance.Models.Receita
 
 @{
-    Layout = "~/Views/Shared/_CustomLayout.cshtml";
+    ViewBag.Title = "Edit";
 }
 
+<h2>Edit</h2>
 
-<div class="modal-dialog">
-    <div class="modal-content">
-        @using (Html.BeginForm())
-        {
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">
-                    <span aria-hidden="true">×</span><span class="sr-only">Close</span>
-                </button>
-                <h4 class="modal-title">Editar produto</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Receita</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ReceitaId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Receita_Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(model => model.Receita_Nome, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Receita_Nome, "", new { @class = "text-danger" })
             </div>
+        </div>
 
-            @Html.AntiForgeryToken()
-            <div class="modal-body">
-                <div class="form-horizontal">
-                    <h4>Receita</h4>
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    @Html.HiddenFor(model => model.ReceitaId)
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Receita_Nome, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EnumDropDownListFor(model => model.Receita_Nome, htmlAttributes: new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.Receita_Nome, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Data_Entrada, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.Data_Entrada, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Data_Entrada, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Receita_Valor, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.Receita_Valor, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Receita_Valor, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Data_Entrada, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Data_Entrada, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Data_Entrada, "", new { @class = "text-danger" })
             </div>
-            <div class="modal-footer">
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" style="outline:none" value="Salvar" class="btn btn-success" />
-                        <input type="button" style="outline:none" value="Cancelar" class="btn btn-danger" data-dismiss="modal" />
-                    </div>
-                </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Receita_Valor, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Receita_Valor, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Receita_Valor, "", new { @class = "text-danger" })
             </div>
-        }
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
     </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
 </div>
 
-
-                @section Scripts {
-                    @Scripts.Render("~/bundles/jqueryval")
-                }
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

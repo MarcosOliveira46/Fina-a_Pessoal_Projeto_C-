@@ -10,11 +10,14 @@ namespace Finance.Models
         [Key]
         public int Despesa_Id { get; set; }
 
-       [Display(Name ="Data")]
+        [Display(Name ="Data")]
         public DateTime Data_Despesa { get; set; }
 
-       [Display(Name = "Valor")]
+        [Display(Name = "Valor")]
         public double  Despesa_Valor { get; set; }
+
+        [ForeignKey("TipoDespesas")]
+        public int TipoDespesaId { get; set; }
         public TipoDespesa TipoDespesas{ get; set; }
     }
 
