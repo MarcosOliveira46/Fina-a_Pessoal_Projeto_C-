@@ -23,23 +23,58 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Receita_Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Data_Entrada)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Receita_Valor)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ReceitaId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ReceitaId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ReceitaId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Receita_Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data_Entrada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Receita_Valor)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ReceitaId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ReceitaId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ReceitaId })
+            </td>
+        </tr>
+    }
 
 </table>
+<div id="modalRec" class="modal fade" role="dialog" />
+
+@section scripts{
+    <script>
+        $(function () {
+            $(".details").click(function () {
+                var id = $(this).attr("data-id");
+                /*alert(id);*/
+                $("#modalRec").load("Receitas/Details?id=" + id, function () {//Receitas
+                    $("#modalRec").modal();
+                })
+            });
+            $(".edit").click(function () {
+                var id = $(this).attr("data-id");
+                /*alert(id);*/
+                $("#modalRec").load("Receitas/Edit?id=" + id, function () {
+                    $("#modalRec").modal();
+                })
+            });
+            $(".delete").click(function () {
+                var id = $(this).attr("data-id");
+                /*alert(id);*/
+                $("#modalRec").load("Receitas/Delete?id=" + id, function () {
+                    $("#modalRec").modal();
+                })
+            });
+           $(".create").click(function () {
+               $("#modalRec").load("Receitas/Create", function () {
+                   $("#modalRec").modal();
+                })
+            });
+        })
+    </script>
+}
