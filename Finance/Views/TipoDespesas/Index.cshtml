@@ -7,7 +7,7 @@
 <h2>Controle do Tipo de Despesa</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <button class="btn btn-success create" style="outline:none">Criar Despesa <i class="glyphicon glyphicon-open"></i></button>
 </p>
 <table class="table">
     <tr>
@@ -41,6 +41,11 @@
                 var id = $(this).attr("data-id");
                 /*alert(id);*/
                 $("#modalType").load("TipoDespesas/Delete?id=" + id, function () {
+                    $("#modalType").modal();
+                })
+            });
+            $(".create").click(function () {
+                $("#modalType").load("TipoDespesas/Create", function () {
                     $("#modalType").modal();
                 })
             });
