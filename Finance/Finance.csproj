@@ -171,6 +171,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Views\Despesas\Details.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -186,7 +187,6 @@
     <Content Include="Views\Shared\_CustomLayout.cshtml" />
     <Content Include="Views\Despesas\Create.cshtml" />
     <Content Include="Views\Despesas\Delete.cshtml" />
-    <Content Include="Views\Despesas\Details.cshtml" />
     <Content Include="Views\Despesas\Edit.cshtml" />
     <Content Include="Views\Despesas\Index.cshtml" />
     <Content Include="Views\Receitas\Create.cshtml" />

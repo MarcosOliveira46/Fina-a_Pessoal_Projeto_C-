@@ -10,9 +10,11 @@
 <body>
 
     @RenderBody()
-
+    <div id="modalTipoDespesa" class="modal fade" role="dialog" />
+    <script src="~/Scripts/inputmask/inputmask.js"></script>
+    <script src="~/Scripts/inputmask/jquery.inputmask.min.js"></script>
     @Scripts.Render("~/bundles/jquery")
-    @*@Scripts.Render("~/bundles/inputmask")*@
+    @Scripts.Render("~/bundles/inputmask")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

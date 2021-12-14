@@ -2,55 +2,82 @@
 
 @{
     ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_CustomLayout.cshtml";
 }
 
-<h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Despesa</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Data_Despesa, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Data_Despesa, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Data_Despesa, "", new { @class = "text-danger" })
+<div class="modal-dialog">
+    <div class="modal-content">
+        @using (Html.BeginForm())
+        {
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span><span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title">Criar nova Despesa</h4>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Despesa_Valor, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Despesa_Valor, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Despesa_Valor, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            @Html.AntiForgeryToken()
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.TipoDespesaId, "Tipo", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("TipoDespesaId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.TipoDespesaId, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <h4>Despesa</h4>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Data_Despesa, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Data_Despesa, new { htmlAttributes = new { @class = "form-control"} })
+                            @Html.ValidationMessageFor(model => model.Data_Despesa, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Despesa_Valor, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Despesa_Valor, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Despesa_Valor, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TipoDespesaId, "Tipo", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("TipoDespesaId", null, htmlAttributes: new { @class = "form-control", style = " display: inline" })
+                            <button type="button" class="btn btn-info tipodespesa " style="outline:none;"><i class="glyphicon glyphicon-plus"></i></button>
+                            @Html.ValidationMessageFor(model => model.TipoDespesaId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+
+            <div class="modal-footer">
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" style="outline:none" value="Criar" class="btn btn-success" />
+                        <input type="button" style="outline:none" value="Cancelar" class="btn btn-danger" data-dismiss="modal" />
+                    </div>
+                </div>
+            </div>
+         }
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
+        @*<div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>*@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+        <script>
+            $(function () {
+                $(".tipodespesa").click(function () {
+                    $("#modalTipoDespesa").load("TipoDespesas/Create", function () {
+                        $("#modalTipoDespesa").modal();
+                    })
+                });
+            });
+
+            $('#Data_Despesa').mask('9999/99/99');
+        </script>
 }

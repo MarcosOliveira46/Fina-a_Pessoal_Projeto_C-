@@ -4,10 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Receita</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <button class="btn btn-success create" style="outline:none">Criar Receita <i class="glyphicon glyphicon-open"></i></button>
 </p>
 <table class="table">
     <tr>
@@ -36,9 +36,12 @@
                 @Html.DisplayFor(modelItem => item.Receita_Valor)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ReceitaId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ReceitaId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ReceitaId })
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.ReceitaId }) |
+        @Html.ActionLink("Details", "Details", new { id = item.ReceitaId }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.ReceitaId })*@
+                @*<button class="btn btn-success details" data-id="@item.ReceitaId" style="outline:none"><i class="glyphicon glyphicon-file"></i></button>*@
+                <button class="btn btn-danger delete" data-id="@item.ReceitaId" style="outline:none"><i class="glyphicon glyphicon-trash"></i></button>
+                <button class="btn btn-primary edit" data-id="@item.ReceitaId" style="outline:none"><i class="glyphicon glyphicon-edit"></i></button>
             </td>
         </tr>
     }

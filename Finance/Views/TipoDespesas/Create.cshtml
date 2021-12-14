@@ -2,39 +2,86 @@
 
 @{
     ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_CustomLayout.cshtml";
 }
+<style>
+    .vertical-alignment-helper {
+        display: table;
+        height: 60%;
+        width: 100%;
+        pointer-events: none; /* This makes sure that we can still click outside of the modal to close it */
+    }
 
-<h2>Create</h2>
+    .vertical-align-center {
+        /* To center vertically */
+        display: table-cell;
+        vertical-align: middle;
+        pointer-events: none;
+    }
 
+    .modal-content {
+        /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+        width: inherit;
+        max-width: inherit; /* For Bootstrap 4 - to avoid the modal window stretching full width */
+        height: inherit;
+        /* To center horizontally */
+        margin: 0 auto;
+        pointer-events: all;
+    }
+</style>
+<div class="vertical-alignment-helper">
+    <div class="modal-sm vertical-align-center">
+        <div class="modal-content">
+            @using (Html.BeginForm())
+            {
+                <div class="modal-header">
+                    <button type="button" class="close fechando">
+                        <span aria-hidden="true" class="fechando">×</span>
+                    </button>
+                    <h4 class="modal-title"><strong>tipo de despesa</strong></h4>
+                </div>
+                @Html.AntiForgeryToken()
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>TipoDespesa</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Descricao, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.LabelFor(model => model.Descricao, htmlAttributes: new { @class = "control-label " })
+                                @Html.EditorFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
+                        @*<div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Create" class="btn btn-default" />
+                                </div>
+                            </div>*@
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" style="outline:none" value="Criar" class="btn btn-success" />
+                            <input type="button" style="outline:none" value="Cancelar" class="btn btn-danger" data-dismiss="modal" />
+                        </div>
+                    </div>
+                </div>
+            }
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@
 
 @section Scripts {
+    <script>
+    $(".fechando").click(function(){
+        $(".fechando").modal('hide');
+    });
+    </script>
     @Scripts.Render("~/bundles/jqueryval")
 }

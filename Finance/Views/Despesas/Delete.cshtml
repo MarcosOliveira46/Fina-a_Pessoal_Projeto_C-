@@ -2,47 +2,60 @@
 
 @{
     ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_CustomLayout.cshtml";
 }
-
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Despesa</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.TipoDespesas.Descricao)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TipoDespesas.Descricao)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Data_Despesa)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Data_Despesa)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Despesa_Valor)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Despesa_Valor)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
+<style>
+    .modal-header, .modal-footer{
+        border: none !important;
     }
+</style>
+<div class="modal-dialog" >
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Deseja realmente deletar esta despesa ?</h4>
+        </div>
+        <div class="modal-body">
+            @*<h4>Despesa</h4>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.TipoDespesas.Descricao)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TipoDespesas.Descricao)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Data_Despesa)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Data_Despesa)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Despesa_Valor)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Despesa_Valor)
+            </dd>
+
+        </dl>*@
+
+        </div>
+            <div class="modal-footer" style="">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        <input type="submit" style="outline:none" value="Deletar" class="btn btn-danger" />
+                        <input type="button" style="outline:none" value="Voltar" class="btn btn-success" data-dismiss="modal" />
+                        @*<input type="submit" value="Delete" class="btn btn-default" /> |
+                    @Html.ActionLink("Back to List", "Index")*@
+                    </div>
+                }
+            </div>
+        </div>
 </div>

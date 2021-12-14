@@ -4,10 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Despesas</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <button class="btn btn-success create" style="outline:none">Criar Despesa <i class="glyphicon glyphicon-open"></i></button>
 </p>
 <table class="table">
     <tr>
@@ -36,9 +36,12 @@
                 @Html.DisplayFor(modelItem => item.Despesa_Valor)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Despesa_Id }) |
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.Despesa_Id }) |
                 @Html.ActionLink("Details", "Details", new { id = item.Despesa_Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Despesa_Id })
+                @Html.ActionLink("Delete", "Delete", new { id = item.Despesa_Id })*@
+                @*<button class="btn btn-success details" data-id="@item.Despesa_Id" style="outline:none"><i class="glyphicon glyphicon-file"></i></button>*@
+                <button class="btn btn-danger delete" data-id="@item.Despesa_Id" style="outline:none"><i class="glyphicon glyphicon-trash"></i></button>
+                <button class="btn btn-primary edit" data-id="@item.Despesa_Id" style="outline:none"><i class="glyphicon glyphicon-edit"></i></button>
             </td>
         </tr>
     }
@@ -60,7 +63,7 @@
             $(".edit").click(function () {
                 var id = $(this).attr("data-id");
                 /*alert(id);*/
-                $("#modalDes").load("Despesas/Edit?id=" + id, function () {
+                $("#modalDes").load("Despesas/Edit?id=" + id, function () {//Modificar quando der erro: Despesas/Edit?id=
                     $("#modalDes").modal();
                 })
             });
